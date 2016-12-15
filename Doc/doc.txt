@@ -1,0 +1,17 @@
+ ----- City ------:
+
+Id (incremental) : l'id
+Name : le nom de la ville
+Country : le pays
+The couple Name-couple is unique
+
+----- Workplace -----:
+
+Id (incremental) : l'id
+Address: Le numéro et le nom de rue
+ZipCode: le code postal
+Phone: le numéro de tel
+Fax: le numéro de fax
+Email: l'adresse e-mail
+CityId: la ville (relation)
+
