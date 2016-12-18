@@ -15,6 +15,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.PageRequest;
 
 /**
@@ -39,38 +40,38 @@ public class Application {
     public CommandLineRunner test(CityService cityService, WorkplaceService workplaceService) {
         return (arg) -> {
 
-            if (null == cityService.findByNameAndCountry("Nice", "France")) {
-
-                City city = cityService.create(new City("Nice", "France"));
-                
-                if (null == workplaceService.findByNameAndCity("Nice étoile", city)) {
-                    workplaceService.create(new Workplace("Nice étoile", city));
-                }
-            }
-
-            if (null == cityService.findByNameAndCountry("Montréal", "Canada")) {
-                City city = cityService.create(new City("Montréal", "Canada"));
-                
-                if (null == workplaceService.findByNameAndCity("Walmart", city)) {
-                    workplaceService.create(new Workplace("Walmart", city));
-                }
-            }
-
-            if (null == cityService.findByNameAndCountry("Marseille", "France")) {
-                City city = cityService.create(new City("Marseille", "France"));
-                
-                 if (null == workplaceService.findByNameAndCity("Carrefour", city)) {
-                    workplaceService.create(new Workplace("Carrefour", city));
-                }
-            }
-
-            List<City> cities = cityService.findAll(new PageRequest(0, 10)).getContent();
-
-            cities.stream().forEach(System.out::println);
-            
-            List<Workplace> workplaces = workplaceService.findAll(new PageRequest(0, 10)).getContent();
-
-            workplaces.stream().forEach(System.out::println);
+//            if (null == cityService.findByNameAndCountry("Nice", "France")) {
+//
+//                City city = cityService.create(new City("Nice", "France"));
+//                
+//                if (null == workplaceService.findByNameAndCity("Nice étoile", city)) {
+//                    workplaceService.create(new Workplace("Nice étoile", city));
+//                }
+//            }
+//
+//            if (null == cityService.findByNameAndCountry("Montréal", "Canada")) {
+//                City city = cityService.create(new City("Montréal", "Canada"));
+//                
+//                if (null == workplaceService.findByNameAndCity("Walmart", city)) {
+//                    workplaceService.create(new Workplace("Walmart", city));
+//                }
+//            }
+//
+//            if (null == cityService.findByNameAndCountry("Marseille", "France")) {
+//                City city = cityService.create(new City("Marseille", "France"));
+//                
+//                 if (null == workplaceService.findByNameAndCity("Carrefour", city)) {
+//                    workplaceService.create(new Workplace("Carrefour", city));
+//                }
+//            }
+//
+//            List<City> cities = cityService.findAll(new PageRequest(0, 10)).getContent();
+//
+//            cities.stream().forEach(System.out::println);
+//            
+//            List<Workplace> workplaces = workplaceService.findAll(new PageRequest(0, 10)).getContent();
+//
+//            workplaces.stream().forEach(System.out::println);
 
         };
     }
