@@ -2,7 +2,10 @@ package com.kaba.planner;
 
 import com.kaba.planner.entity.City;
 import com.kaba.planner.entity.Workplace;
+import com.kaba.planner.service.CityService;
 import com.kaba.planner.service.CityServiceBean;
+import com.kaba.planner.service.EmployeeService;
+import com.kaba.planner.service.WorkplaceService;
 import com.kaba.planner.service.WorkplaceServiceBean;
 import java.util.List;
 import org.slf4j.Logger;
@@ -11,13 +14,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.PageRequest;
 
 /**
+ * Application class (main class)
  *
- * @author kaba
+ * @author Kaba N'faly
+ * @since 12/02/2016
+ * @version 2.0
  */
 @SpringBootApplication
+@Import(AppConfiguration.class)
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -26,8 +34,9 @@ public class Application {
         SpringApplication.run(Application.class);
     }
 
+   
     @Bean
-    public CommandLineRunner test(CityServiceBean cityService, WorkplaceServiceBean workplaceService) {
+    public CommandLineRunner test(CityService cityService, WorkplaceService workplaceService) {
         return (arg) -> {
 
             if (null == cityService.findByNameAndCountry("Nice", "France")) {
@@ -62,7 +71,6 @@ public class Application {
             List<Workplace> workplaces = workplaceService.findAll(new PageRequest(0, 10)).getContent();
 
             workplaces.stream().forEach(System.out::println);
-
 
         };
     }

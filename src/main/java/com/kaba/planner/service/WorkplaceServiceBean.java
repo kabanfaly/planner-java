@@ -23,13 +23,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = false)
 public class WorkplaceServiceBean implements WorkplaceService {
 
+    @Autowired
     private WorkplaceRepository repository;
 
-    @Autowired
-    public WorkplaceServiceBean(WorkplaceRepository repository) {
-        this.repository = repository;
-    }
-
+    /**
+     * No argument constructor
+     */
     public WorkplaceServiceBean() {
     }
 
@@ -47,7 +46,7 @@ public class WorkplaceServiceBean implements WorkplaceService {
     public Workplace findByNameAndCity(String name, City city) {
         return repository.findByNameAndCity(name, city);
     }
-    
+
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public Workplace create(Workplace workplace) {
@@ -57,10 +56,10 @@ public class WorkplaceServiceBean implements WorkplaceService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public Workplace update(Workplace workplace) throws PlannerException {
-        if(null == workplace){
+        if (null == workplace) {
             return null;
         }
-        
+
         if (null == repository.findOne(workplace.getId())) {
             throw new PlannerException(PlannerError.E0001);
         }

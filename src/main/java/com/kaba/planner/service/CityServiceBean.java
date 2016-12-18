@@ -23,12 +23,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = false)
 public class CityServiceBean implements CityService {
 
+    @Autowired
     private CityRepository repository;
 
-    @Autowired
-    public CityServiceBean(CityRepository repository) {
-        this.repository = repository;
-    }
+    /**
+     * No argument constructor
+     */
     public CityServiceBean() {
     }
 

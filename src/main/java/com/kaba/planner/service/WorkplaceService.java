@@ -18,6 +18,7 @@ public interface WorkplaceService {
     /**
      * find all workplaces
      *
+     * @param pgbl pageable to paginate data
      * @return Page of Workplace
      */
     Page<Workplace> findAll(Pageable pgbl);
@@ -25,7 +26,7 @@ public interface WorkplaceService {
     /**
      * Find a workplace by its id
      *
-     * @param id
+     * @param id Workplace id
      * @return Workplace
      */
     Workplace findById(Integer id);
@@ -33,8 +34,8 @@ public interface WorkplaceService {
     /**
      * Find a workplace by name and city id
      *
-     * @param name
-     * @param city
+     * @param name name of the workplace
+     * @param city city of the workplace
      * @return Workplace
      */
     Workplace findByNameAndCity(String name, City city);
@@ -42,7 +43,7 @@ public interface WorkplaceService {
     /**
      * Create a workplace
      *
-     * @param workplace
+     * @param workplace workplace to create
      * @return Workplace
      */
     Workplace create(Workplace workplace);
@@ -50,15 +51,17 @@ public interface WorkplaceService {
     /**
      * Update a workplace
      *
-     * @param workplace
+     * @param workplace workplace to update
      * @return Workplace
+     * @throws com.kaba.planner.exception.PlannerException
      */
     Workplace update(Workplace workplace) throws PlannerException;
 
     /**
      * Delete a workplace
      *
-     * @param id
+     * @param id id of the workplace to delete
+     * @throws com.kaba.planner.exception.PlannerException
      */
     void delete(Integer id) throws PlannerException;
 }

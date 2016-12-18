@@ -5,6 +5,16 @@ Name : le nom de la ville
 Country : le pays
 The couple Name-couple is unique
 
+Opérations:
+Page<City> findAll(Pageable pgbl);
+City findById(Integer id);
+City create(City city);
+City update(City city) throws PlannerException;
+void delete(Integer id) throws PlannerException;
+List<City> findByName(String name);
+City findByNameAndCountry(String name, String country);
+
+
 ----- Workplace -----:
 
 Id (incremental) : l'id
